@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TodoListItem from '../todo_list_item/TodoListItem';
 
-class componentName extends Component {
+class TodoListGroup extends Component {
   static propTypes = {
 
   }
@@ -16,4 +16,4 @@ class componentName extends Component {
   }
 }
 
-export default componentName
+export default TodoListGroup

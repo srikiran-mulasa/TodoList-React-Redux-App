@@ -2,15 +2,13 @@ import React from 'react';
 
 // import Calendar from "./calander/Calander";
 import './App.css';
-import TodoForm from './components/todo_form/TodoForm';
-import TodoListItem from './components/todo_list_item/TodoListItem';
+import Main from './components/main/main';
 
 function App() {
   return (
     <div >
       {/* <Calendar /> */}
-      <TodoForm />
-      <TodoListItem />
+      <Main />
     </div>
   );
 }
