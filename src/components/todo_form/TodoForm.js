@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
 
 class TodoForm extends Component {
-  static propTypes = {
 
-  }
-
+  
   render() {
     return (
       <div>
-        
+        <input type="text" valur="" />
+        <button>Add</button>
       </div>
     )
   }

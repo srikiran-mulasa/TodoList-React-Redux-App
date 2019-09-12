@@ -1,19 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import TodoListItem from '../todo_list_item/TodoListItem';
 
-class TodoListGroup extends Component {
-  static propTypes = {
-
-  }
-
-  render() {
+const TodoListGroup = (props) => {
     return (
-      <ul>
-        <TodoListItem />
-      </ul>
+        <ul>
+            <TodoListItem todo={props}/>
+        </ul>
     )
-  }
 }
 
 export default TodoListGroup
