@@ -1,27 +1,75 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { showTodoList } from '../action/showTodos.action';
+import {deleteTodoItem} from '../action/deleteTodo.action';
 
-const TodoListItem = (props) => {
+class TodoListItem extends Component {
 
-    const todoList = props.todo.todo.length ? (
-        props.todo.todo.map(item => {
-            console.log(item);
-            return (
-                <li key={item.id}>
-                    <h4>
-                        {item.content}
-                    </h4>
-                </li>
-            )
-        })
+    state ={
+        allStates:[]
+    }
 
-    ) : (<p>You have no Todo left Today</p>);
+    // componentDidMount() {
+    //     fetch('https://restcountries.eu/rest/v2/all')
+    //         .then(result => { return result.json() })
+    //         .then(res => console.log(res));
 
-    return (
-        <Fragment>
-            {todoList}
-        </Fragment>
+            
+    // }
 
-    );
+    showTodoList = (item) => {
+        const { _showTodoList } = this.props;
+        _showTodoList(item);
+    }
+    deleteItem = (item) => {
+        const { _deleteItem } = this.props;
+        _deleteItem(item);
+    }
+
+    deleteTodoItem = (e) => {
+        const { _deleteItem } = this.props;
+        e.preventDefault();
+        _deleteItem();
+
+      }
+    render() {
+        const { allTodoItems } = this.props;
+
+        return (
+            <Fragment>
+                {
+                    allTodoItems.length ? (
+                        allTodoItems.map(item => {
+                            return (
+                                <li key={item.id}>
+                                    <span>
+                                        {item}
+                                    </span>
+                                    <button onClick={this.deleteTodoItem}>Delete</button>
+                                </li>
+                            )
+                        })
+
+                    ) : (<p>You have no Todo left Today</p>)
+
+                }
+            </Fragment>
+
+        )
+    }
 }
 
-export default TodoListItem;
+const mapStoreToProps = (store) => ({
+    allTodoItems: store.addTodo.items,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    _showTodoList: (item) => {
+        dispatch(showTodoList(item))
+    },
+    _deleteItem: (item) => {
+        dispatch(deleteTodoItem(item))
+    }
+})
+
+export default connect(mapStoreToProps, mapDispatchToProps)(TodoListItem);

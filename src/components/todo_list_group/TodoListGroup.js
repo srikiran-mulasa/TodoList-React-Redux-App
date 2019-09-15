@@ -4,7 +4,7 @@ import TodoListItem from '../todo_list_item/TodoListItem';
 const TodoListGroup = (props) => {
     return (
         <ul>
-            <TodoListItem todo={props}/>
+            <TodoListItem/>
         </ul>
     )
 }
