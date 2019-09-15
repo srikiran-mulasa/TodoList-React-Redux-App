@@ -3,7 +3,7 @@ const InitialState = {
 };
 
 const addItem = (state, action) => {
-    const { payload} = action;
+    const { payload } = action;
     return {
         ...state,
         items: [...state.items, payload],
@@ -11,9 +11,20 @@ const addItem = (state, action) => {
 }
 
 export function addItemReducer(state = InitialState, action) {
-    switch(action.type) {
+    switch (action.type) {
         case 'ADD_TODO_ITEM': return addItem(state, action);
-    default: 
-        return state;
+        case 'DELETE_TODO_ITEM': return deleteItem(state, action);
+        default:
+            return state;
+    }
+}
+
+const deleteItem = (state, action) => {
+    const { payload } = action;
+    const arr = [...state.items];
+    arr.splice(payload, 1);
+    return {
+        ...state, 
+        items: arr,
     }
 }

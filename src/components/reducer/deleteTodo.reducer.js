@@ -6,6 +6,7 @@ const deleteItem = (state, action) => {
     const { payload} = action;
     return {
         ...state,
+        ...state.items.splice(payload, 1),
         items: [...state.items, payload],
     }
 }

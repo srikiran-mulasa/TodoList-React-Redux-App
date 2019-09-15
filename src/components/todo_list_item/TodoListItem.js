@@ -6,7 +6,7 @@ import {deleteTodoItem} from '../action/deleteTodo.action';
 class TodoListItem extends Component {
 
     state ={
-        allStates:[]
+        allStates:[],
     }
 
     // componentDidMount() {
@@ -21,16 +21,10 @@ class TodoListItem extends Component {
         const { _showTodoList } = this.props;
         _showTodoList(item);
     }
-    deleteItem = (item) => {
+
+    deleteTodoItem = (e, item) => {
         const { _deleteItem } = this.props;
         _deleteItem(item);
-    }
-
-    deleteTodoItem = (e) => {
-        const { _deleteItem } = this.props;
-        e.preventDefault();
-        _deleteItem();
-
       }
     render() {
         const { allTodoItems } = this.props;
@@ -39,13 +33,13 @@ class TodoListItem extends Component {
             <Fragment>
                 {
                     allTodoItems.length ? (
-                        allTodoItems.map(item => {
+                        allTodoItems.map((item, index) => {
                             return (
-                                <li key={item.id}>
+                                <li key={index}>
                                     <span>
                                         {item}
                                     </span>
-                                    <button onClick={this.deleteTodoItem}>Delete</button>
+                                    <button onClick={(e) => this.deleteTodoItem(e, index)}>Delete</button>
                                 </li>
                             )
                         })
