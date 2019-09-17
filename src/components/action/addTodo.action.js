@@ -27,3 +27,17 @@ export const deleteTodoItem = (item) => {
         dispatch(deleteItem(item));
     })
 }
+
+//  Action - type & payload
+function editItem(item) {
+    return {
+        type: 'EDIT_TODO_ITEM',
+        payload: item,
+    }
+}
+
+export const editTodoItem= (item) => {
+    return (dispatch => {
+        dispatch(editItem(item));
+    })
+}
